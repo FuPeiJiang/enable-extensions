@@ -16,6 +16,7 @@ const extensions = vscode.extensions
  */
 async function activate(context) {
 
+p(5345345)
 	// p(process.env)
 	// p(process.env.VSCODE_CWD)
 

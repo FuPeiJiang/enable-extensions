@@ -24,6 +24,7 @@
 		"ext": "webpack --mode production && vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
 		"vsix": "webpack --mode production && vsce package -o activate-extensions.vsix",
 		"nowebpack" : "vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
+		"dev": "webpack --mode development --watch",
 		"webpack": "webpack --mode production",
 		"package": "vsce package -o activate-extensions.vsix",
 		"lint": "eslint .",
