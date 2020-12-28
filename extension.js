@@ -20,55 +20,67 @@ async function activate(context) {
 	// p(process.env.VSCODE_CWD)
 
 	//Microsoft VS Code\resources\app  to  Microsoft VS Code\bin 
-/* 	const codePath = path.join(path.dirname(path.dirname(vscode.env.appRoot)), "bin")
-
-	const extensionsList = child_process.execSync("code --list-extensions", { cwd: codePath }).toString().slice(0, -1).split('\n')
-
-	// console.log(extensions.all);
-	// p(Object.keys(extensions.all))
-
-
-
-	// p(extensionsList)
-	var length = extensionsList.length
-	const activeExtensions = []
-	var total = 0
-	for (let i = 0; i < length; i++) {
-		// const extensionObj = extensions.getExtension("ms-toolsai.jupyter")
-		const extensionObj = extensions.getExtension(extensionsList[i])
-		if (!extensionObj) { continue }
-
-		// p(extensionObj)
-		// p(Object.keys(extensionObj))
-		activeExtensions.push(extensionsList[i])
-		// p(extensionsList[i], extensionObj.isActive)
-		total++
-		// return
-
-		// p(i, extensionsList[i])
-	}
-
-	p("total:", total)
-
-	const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_activate-extensions")
-
- */
-	// fs.writeFileSync(path.join(appdataDir, "1.json"), JSON.stringify(activeExtensions), 'utf-8')
+	/* 	const codePath = path.join(path.dirname(path.dirname(vscode.env.appRoot)), "bin")
+	
+		const extensionsList = child_process.execSync("code --list-extensions", { cwd: codePath }).toString().slice(0, -1).split('\n')
+	
+		// console.log(extensions.all);
+		// p(Object.keys(extensions.all))
+	
+	
+	
+		// p(extensionsList)
+		var length = extensionsList.length
+		const activeExtensions = []
+		var total = 0
+		for (let i = 0; i < length; i++) {
+			// const extensionObj = extensions.getExtension("ms-toolsai.jupyter")
+			const extensionObj = extensions.getExtension(extensionsList[i])
+			if (!extensionObj) { continue }
+	
+			// p(extensionObj)
+			// p(Object.keys(extensionObj))
+			activeExtensions.push(extensionsList[i])
+			// p(extensionsList[i], extensionObj.isActive)
+			total++
+			// return
+	
+			// p(i, extensionsList[i])
+		}
+	
+		p("total:", total)
+	
+		const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_activate-extensions")
+	
+	 */
 
 	// await writeFile(path.join(appdataDir, "1.json"), JSON.stringify(activeExtensions), 'utf-8')
 
 	let disposable = vscode.commands.registerCommand('activate-extensions.helloWorld', async function () {
 		try {
 
-			console.log(vscode.extensions.all)
-			return
+			var packageJsonPath = path.join(__dirname, "package.json")
+			if (!fs.existsSync(packageJsonPath)) {
+				packageJsonPath = path.join(path.dirname(packageJsonPath), "package.json")
+			}
 
 
+			const jsonAr = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
+			const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_activate-extensions")
 
+			var extensionListFile
+			// extensionListFile = await window.showQuickPick(["fwefwf", "65476", "kyukyuk"], { canPickMany: false })
+			extensionListFile = "1.json"
 
-			extensionListFile = await window.showQuickPick(["fwefwf", "65476", "kyukyuk"], { canPickMany: false })
-			jsonAr.extensionDependencies = {}
+			// p(JSON.parse(fs.readFileSync(path.join(appdataDir, extensionListFile), 'utf-8')))
+
+			jsonAr.extensionDependencies = JSON.parse(fs.readFileSync(path.join(appdataDir, extensionListFile), 'utf-8'))
+
+			// p(jsonAr)
+			// p(JSON.stringify(jsonAr))
+
+			await writeFile(packageJsonPath, JSON.stringify(jsonAr), 'utf-8')
 
 		} catch (error) {
 			console.log(error)

@@ -8,28 +8,22 @@
 		"vscode": "^1.52.0"
 	},
 	"main": "./extension.js",
-	"extensionDependencies": [],
+	"extensionPack": ["bierner.github-markdown-preview", "bierner.markdown-preview-github-styles", "christian-kohler.npm-intellisense", "chunsen.bracket-select", "dbaeumer.jshint", "dbaeumer.vscode-eslint", "eamodio.gitlens", "formulahendry.code-runner", "FuPeiJiang.activate-extensions", "FuPeiJiang.git-rebase-files", "FuPeiJiang.git-search-in-changes", "GitHub.vscode-pull-request-github", "HookyQR.beautify", "KevinRose.vsc-python-indent", "kiteco.kite", "leizongmin.node-module-intellisense", "mark-wiemer.vscode-autohotkey-plus-plus", "ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter", "ryuta46.multi-command", "sleistner.vscode-fileutils", "vscode-icons-team.vscode-icons", "xabikos.JavaScriptSnippets"],
 	"repository": {
 		"type": "git"
 	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"*",
-		"onCommand:activate-extensions.helloWorld"
-	],
+	"categories": ["Other"],
+	"activationEvents": ["*", "onCommand:activate-extensions.helloWorld"],
 	"contributes": {
-		"commands": [
-			{
-				"command": "activate-extensions.helloWorld",
-				"title": "Hello World"
-			}
-		]
+		"commands": [{
+			"command": "activate-extensions.helloWorld",
+			"title": "Hello World"
+		}]
 	},
 	"scripts": {
 		"ext": "webpack --mode production && vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
 		"vsix": "webpack --mode production && vsce package -o activate-extensions.vsix",
+		"nowebpack" : "vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
 		"webpack": "webpack --mode production",
 		"package": "vsce package -o activate-extensions.vsix",
 		"lint": "eslint .",
