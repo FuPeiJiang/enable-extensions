@@ -1,5 +1,5 @@
 {
-	"name": "activate-extensions",
+	"name": "enable-extensionss",
 	"displayName": "activate extensions",
 	"description": "",
 	"publisher": "FuPeiJiang",
@@ -8,30 +8,30 @@
 		"vscode": "^1.52.0"
 	},
 	"main": "./extension.js",
-	"extensionPack": ["bierner.github-markdown-preview", "bierner.markdown-preview-github-styles", "christian-kohler.npm-intellisense", "chunsen.bracket-select", "dbaeumer.jshint", "dbaeumer.vscode-eslint", "eamodio.gitlens", "formulahendry.code-runner", "FuPeiJiang.activate-extensions", "FuPeiJiang.git-rebase-files", "FuPeiJiang.git-search-in-changes", "GitHub.vscode-pull-request-github", "HookyQR.beautify", "KevinRose.vsc-python-indent", "kiteco.kite", "leizongmin.node-module-intellisense", "mark-wiemer.vscode-autohotkey-plus-plus", "ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter", "ryuta46.multi-command", "sleistner.vscode-fileutils", "vscode-icons-team.vscode-icons", "xabikos.JavaScriptSnippets"],
+	"extensionPack": ["bierner.github-markdown-preview", "bierner.markdown-preview-github-styles", "christian-kohler.npm-intellisense", "chunsen.bracket-select", "dbaeumer.jshint", "dbaeumer.vscode-eslint", "eamodio.gitlens", "formulahendry.code-runner", "FuPeiJiang.enable-extensionss", "FuPeiJiang.git-rebase-files", "FuPeiJiang.git-search-in-changes", "GitHub.vscode-pull-request-github", "HookyQR.beautify", "KevinRose.vsc-python-indent", "kiteco.kite", "leizongmin.node-module-intellisense", "mark-wiemer.vscode-autohotkey-plus-plus", "ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter", "ryuta46.multi-command", "sleistner.vscode-fileutils", "vscode-icons-team.vscode-icons", "xabikos.JavaScriptSnippets"],
 	"repository": {
 		"type": "git"
 	},
 	"categories": ["Other"],
-	"activationEvents": ["*", "onCommand:activate-extensions.show-enabled-extensions"],
+	"activationEvents": ["*", "onCommand:enable-extensionss.show-enabled-extensions"],
 	"contributes": {
 		"commands": [{
-				"command": "activate-extensions.show-enabled-extensions",
-				"title": "activate-extensions: show enabled extensions"
+				"command": "enable-extensionss.show-enabled-extensions",
+				"title": "enable-extensionss: show enabled extensions"
 			},
 			{
-				"command": "activate-extensions.use-extension-list",
-				"title": "activate-extensions: use extension list"
+				"command": "enable-extensionss.use-extension-list",
+				"title": "enable-extensionss: use extension list"
 			}
 		]
 	},
 	"scripts": {
-		"ext": "webpack --mode production && vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
-		"vsix": "webpack --mode production && vsce package -o activate-extensions.vsix",
-		"nowebpack": "vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
+		"ext": "webpack --mode production && vsce package -o enable-extensionss.vsix && code --install-extension enable-extensionss.vsix",
+		"vsix": "webpack --mode production && vsce package -o enable-extensionss.vsix",
+		"nowebpack": "vsce package -o enable-extensionss.vsix && code --install-extension enable-extensionss.vsix",
 		"dev": "webpack --mode development --watch",
 		"webpack": "webpack --mode production",
-		"package": "vsce package -o activate-extensions.vsix",
+		"package": "vsce package -o enable-extensionss.vsix",
 		"lint": "eslint .",
 		"pretest": "yarn run lint",
 		"test": "node ./test/runTest.js"

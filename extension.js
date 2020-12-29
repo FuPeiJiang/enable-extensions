@@ -24,7 +24,7 @@ async function activate(context) {
 
 
 
-	context.subscriptions.push(vscode.commands.registerCommand('activate-extensions.show-enabled-extensions', async function () {
+	context.subscriptions.push(vscode.commands.registerCommand('enable-extensionss.show-enabled-extensions', async function () {
 		try {
 			const codePath = path.join(path.dirname(path.dirname(vscode.env.appRoot)), "bin")
 
@@ -62,7 +62,7 @@ async function activate(context) {
 			})
 
 
-			// const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_activate-extensions")
+			// const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_enable-extensionss")
 
 			// await writeFile(path.join(appdataDir, "1.json"), JSON.stringify(activeExtensions), 'utf-8')
 
@@ -72,7 +72,7 @@ async function activate(context) {
 		}
 	}))
 
-	context.subscriptions.push(vscode.commands.registerCommand('activate-extensions.use-extension-list', async function () {
+	context.subscriptions.push(vscode.commands.registerCommand('enable-extensionss.use-extension-list', async function () {
 		try {
 
 			var packageJsonPath = path.join(__dirname, "package.json")
@@ -83,7 +83,7 @@ async function activate(context) {
 
 			const jsonAr = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
-			const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_activate-extensions")
+			const appdataDir = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "vscode_enable-extensionss")
 
 			var extensionListFile
 			// extensionListFile = await window.showQuickPick(["fwefwf", "65476", "kyukyuk"], { canPickMany: false })
