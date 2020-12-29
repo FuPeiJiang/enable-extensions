@@ -13,17 +13,22 @@
 		"type": "git"
 	},
 	"categories": ["Other"],
-	"activationEvents": ["*", "onCommand:activate-extensions.helloWorld"],
+	"activationEvents": ["*", "onCommand:activate-extensions.show-enabled-extensions"],
 	"contributes": {
 		"commands": [{
-			"command": "activate-extensions.helloWorld",
-			"title": "Hello World"
-		}]
+				"command": "activate-extensions.show-enabled-extensions",
+				"title": "activate-extensions: show enabled extensions"
+			},
+			{
+				"command": "activate-extensions.use-extension-list",
+				"title": "activate-extensions: use extension list"
+			}
+		]
 	},
 	"scripts": {
 		"ext": "webpack --mode production && vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
 		"vsix": "webpack --mode production && vsce package -o activate-extensions.vsix",
-		"nowebpack" : "vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
+		"nowebpack": "vsce package -o activate-extensions.vsix && code --install-extension activate-extensions.vsix",
 		"dev": "webpack --mode development --watch",
 		"webpack": "webpack --mode production",
 		"package": "vsce package -o activate-extensions.vsix",
