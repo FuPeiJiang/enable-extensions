@@ -3,3 +3,4 @@ node_modules
 *.vsix
 dist
 yarn-error.log
+vsc-extension-quickstart.md
